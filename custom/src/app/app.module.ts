@@ -6,19 +6,24 @@ import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule} from '@angular/forms';
+import { CustomersService } from './customers.service';
+import { CustomerFilterPipe} from './customer/customer-filter.pipe'
+import {routing} from './app-routing.module'
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
-    RegisterComponent
+    RegisterComponent,
+    CustomerFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
-  providers: [],
+  providers: [CustomersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

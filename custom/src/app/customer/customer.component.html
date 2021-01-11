@@ -7,13 +7,13 @@
         <h5>Name:</h5>
       </div>
       <div class="col-xs-2">
-        <input type="text" placeholder="Customer name" (input)="searchCustomer(firstName.value)" class="form-control" #firstName />
+        <input type="text" placeholder="Search by First Name" class="form-control" [(ngModel)]="searchTerm" />
       </div>
       </div>
      
 
     <div class="float-left">
-    <button type="button" class="btn btn-default">Add New Customer</button>
+    <button type="btn" (click)="addCustomer()" class="btn btn-default">Add New Customer</button>
     </div>
   
     <div class="table-responsive">
@@ -27,7 +27,7 @@
           <th style="text-align:center;">State</th>
           <th style="text-align:left;">Order Total</th>
         </tr>
-        <tr *ngFor="let data of filterCustomer" style="background-color:white">
+        <tr *ngFor="let data of customers | customerFilter: searchTerm" style="background-color:white">
           <td><img [src]="imageSrc"></td>
           <td> {{data.firstName}} </td>
           <td> {{data.lastName}} </td>
@@ -37,7 +37,6 @@
           <td> {{data.orderTotal}} </td>
          </tr>
       </table>
-    
     </div>
   </div>
 </div>

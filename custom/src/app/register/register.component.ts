@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,6 +23,7 @@ export class RegisterComponent implements OnInit {
     console.log(form.value.address);
     console.log(form.value.city);
     console.log(form.value.state);
+    
   }
 
 }

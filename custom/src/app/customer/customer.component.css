@@ -1,0 +1,52 @@
+.customer {
+  width: 100%;
+}
+.firstdiv {
+}
+.nameAndButton {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.namediv {
+  display: flex;
+  width: 50%;
+  justify-content: stretch;
+  font-size: medium;
+}
+label {
+  width: 10%;
+  text-align: right;
+  margin: auto;
+}
+.button {
+  width: 10%;
+  justify-content: right;
+}
+button {
+  width: 100%;
+}
+h3 {
+  max-height: 30px;
+}
+input {
+  width: 80%;
+  padding-right: 10px;
+  padding-left: 0;
+}
+
+.container {
+}
+.header {
+  height: 35px;
+  font-weight: 700;
+  background-color: rgb(250, 248, 248);
+}
+.data {
+  border-style: none;
+  border-width: thin;
+  height: 50px;
+}
+.data:nth-child(odd) {
+  background-color: #dddede;
+}

@@ -1,107 +1,171 @@
 <div class="col-sm-7">
-    <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm)" style="background-color:white;">
-          <h2>Customer</h2>
-         <br>
-          <h5 style="color:dimgrey;font-size:medium">All fields are mandatory</h5>
-          <br>
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" name="firstName" #firstName="ngModel" class="form-control" ngModel required>
+  <form
+    #loginForm="ngForm"
+    (ngSubmit)="submitLoginForm(loginForm)"
+    style="background-color: white"
+  >
+    <h2>Add Customer</h2>
+    <br />
+    <h5 style="color: dimgrey; font-size: medium">All fields are mandatory</h5>
+    <br />
+    <div class="form-group">
+      <label>First Name</label>
+      <input
+        type="text"
+        name="firstName"
+        #firstName="ngModel"
+        class="form-control"
+        ngModel
+        required
+      />
 
-            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" style="text-align:left; padding-top:5px; color:red;">
-              <div [hidden]="!firstName.errors.required">
-                <p>&nbsp;First Name is mandatory</p>
-              </div>
-            </div>
-          </div>
-            
-
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" name="lastName" #lastName="ngModel" class="form-control" ngModel required>
-
-            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" style="text-align:left; padding-top:5px; color:red;">
-              <div [hidden]="!lastName.errors.required">
-                <p>&nbsp;Last Name is mandatory</p>
-              </div>
-            </div>
-            </div>
-            
-
-          <div class="form-group">
-            <label>Gender</label>
-            <input type="radio" name="gender" value="M"   ngModel required>
-            <label for="M">Male</label>
-            <input type="radio" name="gender" value="F" ngModel required>
-            <label for="F">Female</label>
-          
-          <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" style="text-align:left; padding-top:5px; color:red;">
-            <div [hidden]="!lastName.errors.required">
-              <p>&nbsp;Last Name is mandatory</p>
-            </div>
+      <div
+        *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!firstName.errors.required">
+          <p>&nbsp;First Name is mandatory</p>
         </div>
+      </div>
     </div>
-            
-            
 
+    <div class="form-group">
+      <label>Last Name</label>
+      <input
+        type="text"
+        name="lastName"
+        #lastName="ngModel"
+        class="form-control"
+        ngModel
+        required
+      />
 
-          <div class="form-group">
-            <label>Email Id</label>
-              <input type="email" name="email" #emailRef="ngModel" class="form-control" ngModel required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
-            
-            <div *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)" style="text-align:left; padding-top:5px; color:red;">
-              <div [hidden]="!emailRef.errors.required">
-                <p>&nbsp;Email id is mandatory</p>
-              </div>
-              <div [hidden]="!emailRef.errors.pattern">
-                <p>&nbsp;Email id is not entered in proper format</p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-              <label>Address</label>
-              <input type="text" name="address" #address="ngModel" class="form-control" ngModel required>
-            
-            <div *ngIf="address.errors && (address.dirty || address.touched)" style="text-align:left; padding-top:5px; color:red;">
-              <div [hidden]="!address.errors.required">
-                <p>&nbsp;Address is mandatory</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-              <label>City</label>
-              <input type="text" name="city" #city="ngModel" class="form-control" ngModel required>
-        
-            <div *ngIf="city.errors && (city.dirty || city.touched)" style="text-align:left; padding-top:5px; color:red;">
-              <div [hidden]="!city.errors.required">
-                <p>&nbsp;City is mandatory</p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-              <label>State</label>
-              <input type="text" name="state" #state="ngModel" class="form-control" ngModel required>
-            
-            <div *ngIf="state.errors && (state.dirty || state.touched)" style="text-align:left; padding-top:5px; color:red;">
-              <div [hidden]="!state.errors.required">
-                <p>&nbsp;State is mandatory</p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="form-group" style="text-align:left">
-            <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn" routerLink="/customer">
-              Cancel</button>
-          </div>
-          
-        <div class="col-md-4">
+      <div
+        *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!lastName.errors.required">
+          <p>&nbsp;Last Name is mandatory</p>
         </div>
-    </form>
-  </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Gender</label>
+      <input type="radio" name="gender" value="M" ngModel required />
+      <label for="M">Male</label>
+      <input type="radio" name="gender" value="F" ngModel required />
+      <label for="F">Female</label>
+
+      <div
+        *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!lastName.errors.required">
+          <p>&nbsp;Last Name is mandatory</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email Id</label>
+      <input
+        type="email"
+        name="email"
+        #emailRef="ngModel"
+        class="form-control"
+        ngModel
+        required
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+      />
+
+      <div
+        *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!emailRef.errors.required">
+          <p>&nbsp;Email id is mandatory</p>
+        </div>
+        <div [hidden]="!emailRef.errors.pattern">
+          <p>&nbsp;Email id is not entered in proper format</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Address</label>
+      <input
+        type="text"
+        name="address"
+        #address="ngModel"
+        class="form-control"
+        ngModel
+        required
+      />
+
+      <div
+        *ngIf="address.errors && (address.dirty || address.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!address.errors.required">
+          <p>&nbsp;Address is mandatory</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <input
+        type="text"
+        name="city"
+        #city="ngModel"
+        class="form-control"
+        ngModel
+        required
+      />
+
+      <div
+        *ngIf="city.errors && (city.dirty || city.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!city.errors.required">
+          <p>&nbsp;City is mandatory</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>State</label>
+      <input
+        type="text"
+        name="state"
+        #state="ngModel"
+        class="form-control"
+        ngModel
+        required
+      />
+
+      <div
+        *ngIf="state.errors && (state.dirty || state.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!state.errors.required">
+          <p>&nbsp;State is mandatory</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="text-align: left">
+      <button
+        type="submit"
+        [disabled]="!loginForm.form.valid"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      <button type="button" class="btn" routerLink="/customer">Cancel</button>
+    </div>
+
+    <div class="col-md-4"></div>
+  </form>
+</div>

@@ -13,9 +13,10 @@ import { state } from '@angular/animations';
 export class CustomerComponent implements OnInit {
   customer: iCustomer[];
   searchTerm;
+  image = 'Female';
 
   constructor(private service: CustomersService, private router: Router) {
-    this.customer = service.getCustomer();
+    this.customer = this.service.getCustomer();
   }
 
   addCustomer() {

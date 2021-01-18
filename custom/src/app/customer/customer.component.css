@@ -3,6 +3,7 @@
 }
 .firstdiv {
 }
+
 .nameAndButton {
   display: inline-flex;
   width: 100%;
@@ -54,4 +55,6 @@ input {
   height: 50px;
   width: 50px;
   align-self: auto;
+}
+.customer > .secondDiv > .container > .data > .imgdiv {
 }

@@ -1,16 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Customer } from './customer.model';
+import { iCustomer } from './customer.model';
 
 @Pipe({
   name: 'customerFilter',
 })
 export class CustomerFilterPipe implements PipeTransform {
-  transform(customers: Customer[], searchTerm: string): Customer[] {
-    if (!customers || !searchTerm) {
-      return customers;
+  transform(customer: iCustomer[], searchTerm: string): iCustomer[] {
+    if (!customer || !searchTerm) {
+      return customer;
     }
 
-    return customers.filter(
+    return customer.filter(
       (c) => c.firstName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
     );
   }

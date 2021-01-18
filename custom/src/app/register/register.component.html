@@ -1,22 +1,47 @@
+<div class="container mt-3 headerdiv">
+  <h3>{{ header }}</h3>
+</div>
 <div class="col-sm-7">
   <form
     #loginForm="ngForm"
     (ngSubmit)="submitLoginForm(loginForm)"
     style="background-color: white"
   >
-    <h2>Add Customer</h2>
-    <br />
     <h5 style="color: dimgrey; font-size: medium">All fields are mandatory</h5>
     <br />
+
+    <div class="form-group">
+      <label>Id</label>
+      <input
+        type="text"
+        name="id"
+        #id="ngModel"
+        placeholder="Enter Your Id"
+        class="form-control"
+        [(ngModel)]="customer.id"
+        required
+      />
+
+      <div
+        *ngIf="id.errors && (id.dirty || id.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="id.errors.required">
+          <p>&nbsp;Id is mandatory</p>
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
       <label>First Name</label>
       <input
         type="text"
-        name="firstName"
-        #firstName="ngModel"
         class="form-control"
-        ngModel
+        name="firstName"
+        placeholder="Enter Your First Name"
         required
+        [(ngModel)]="customer.firstName"
+        #firstName="ngModel"
       />
 
       <div
@@ -34,9 +59,10 @@
       <input
         type="text"
         name="lastName"
+        placeholder="Enter Your Last Name"
         #lastName="ngModel"
         class="form-control"
-        ngModel
+        [(ngModel)]="customer.lastName"
         required
       />
 
@@ -51,18 +77,32 @@
     </div>
 
     <div class="form-group">
-      <label>Gender</label>
-      <input type="radio" name="gender" value="M" ngModel required />
-      <label for="M">Male</label>
-      <input type="radio" name="gender" value="F" ngModel required />
-      <label for="F">Female</label>
+      <label class="control-label">Gender</label>
+      <input
+        type="radio"
+        name="gender"
+        value="Male"
+        #gender="ngModel"
+        [(ngModel)]="customer.gender"
+        required
+      />
+      <label for="Male">Male</label>
+      <input
+        type="radio"
+        name="gender"
+        value="Female"
+        #gender="ngModel"
+        [(ngModel)]="customer.gender"
+        required
+      />
+      <label for="Female">Female</label>
 
       <div
-        *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+        *ngIf="gender.errors && (gender.dirty || gender.touched)"
         style="text-align: left; padding-top: 5px; color: red"
       >
-        <div [hidden]="!lastName.errors.required">
-          <p>&nbsp;Last Name is mandatory</p>
+        <div [hidden]="!gender.errors.required">
+          <p>&nbsp;Gender is mandatory</p>
         </div>
       </div>
     </div>
@@ -72,9 +112,10 @@
       <input
         type="email"
         name="email"
+        placeholder="Enter Your Email"
         #emailRef="ngModel"
         class="form-control"
-        ngModel
+        [(ngModel)]="customer.email"
         required
         pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
       />
@@ -97,9 +138,10 @@
       <input
         type="text"
         name="address"
+        placeholder="Enter Your Address"
         #address="ngModel"
         class="form-control"
-        ngModel
+        [(ngModel)]="customer.address"
         required
       />
 
@@ -118,9 +160,10 @@
       <input
         type="text"
         name="city"
+        placeholder="Enter Your City"
         #city="ngModel"
         class="form-control"
-        ngModel
+        [(ngModel)]="customer.city"
         required
       />
 
@@ -139,9 +182,10 @@
       <input
         type="text"
         name="state"
+        placeholder="Enter Your state"
         #state="ngModel"
         class="form-control"
-        ngModel
+        [(ngModel)]="customer.state"
         required
       />
 
@@ -151,6 +195,29 @@
       >
         <div [hidden]="!state.errors.required">
           <p>&nbsp;State is mandatory</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Order Total</label>
+      <input
+        type="number"
+        min="1000"
+        step="1000"
+        name="orderTotal"
+        #orderTotal="ngModel"
+        class="form-control"
+        [(ngModel)]="customer.orderTotal"
+        required
+      />
+
+      <div
+        *ngIf="orderTotal.errors && (orderTotal.dirty || orderTotal.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!orderTotal.errors.required">
+          <p>&nbsp;orderTotal is mandatory</p>
         </div>
       </div>
     </div>

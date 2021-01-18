@@ -1,7 +1,9 @@
+import { iCustomer } from './customer.model';
 import { routing } from './../app-routing.module';
 import { CustomersService } from './../customers.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-customer',
@@ -9,14 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer.component.css'],
 })
 export class CustomerComponent implements OnInit {
-  customers;
+  customer: iCustomer[];
   searchTerm;
 
-  constructor(service: CustomersService, private router: Router) {
-    this.customers = service.getCustomer();
+  constructor(private service: CustomersService, private router: Router) {
+    this.customer = service.getCustomer();
   }
+
   addCustomer() {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/add/0']);
+  }
+  onDelete(id: number) {
+    this.service.delete(id);
   }
 
   ngOnInit() {}

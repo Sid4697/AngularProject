@@ -45,8 +45,13 @@ input {
 .data {
   border-style: none;
   border-width: thin;
-  height: 50px;
+  height: 80px;
 }
-.data:nth-child(odd) {
-  background-color: #dddede;
+.data:nth-child(even) {
+  background-color: #e0e4e4;
+}
+.img {
+  height: 50px;
+  width: 50px;
+  align-self: auto;
 }

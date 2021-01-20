@@ -12,8 +12,9 @@ import { state } from '@angular/animations';
 })
 export class CustomerComponent implements OnInit {
   customer: iCustomer[];
-  searchTerm;
+  searchTerm: string;
   image = 'Female';
+  err;
 
   constructor(private service: CustomersService, private router: Router) {}
 
@@ -26,9 +27,23 @@ export class CustomerComponent implements OnInit {
   addCustomer() {
     this.router.navigate(['/add/0']);
   }
-  //onDelete(id: number) {
-  //this.service.delete(id);
-  //}
+  onDelete(id: number) {
+    this.service.deleteCustomer(id).subscribe(
+      (responseCustomerData) => {
+        if (responseCustomerData) {
+          alert('Customer removed sucessfully.');
+        }
+      },
+      (responseCustomerError) => {
+        (this.err = responseCustomerError),
+          console.log(this.err),
+          alert(
+            'Sorry, something went wrong. Please try again after sometime.'
+          );
+      },
+      () => console.log('Delete method added successfully')
+    );
+  }
 
   ngOnInit() {
     this.getCustomers();

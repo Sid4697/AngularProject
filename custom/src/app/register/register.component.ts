@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
     state: '',
     orderTotal: null,
   };
+  value: any;
+
 
   constructor(
     private service: CustomersService,
@@ -41,40 +43,24 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  submitLoginForm(form: NgForm) {
-    console.log(form.value);
-    var customer: iCustomer = {
-      id: form.value.id,
-      firstName: form.value.firstName,
-      lastName: form.value.lastName,
-      address: form.value.address,
-      gender: form.value.gender,
-      email: form.value.email,
-      city: form.value.city,
-      state: form.value.state,
-      orderTotal: form.value.orderTotal,
-    };
+  submitLoginForm(customer: iCustomer) {
+    console.log(customer);
+    //var customer: iCustomer = {
+    //id: form.value.id,
+    //firstName: form.value.firstName,
+    //lastName: form.value.lastName,
+    //address: form.value.address,
+    //gender: form.value.gender,
+    //email: form.value.email,
+    //city: form.value.city,
+    //state: form.value.state,
+    //orderTotal: form.value.orderTotal,
+    //};
     if (this.id === 0) {
       //this.service.post(customer);
-      this.service.createCustomer(customer).subscribe(
-        (responseCustomerData) => {
-          if (responseCustomerData) {
-            alert('Customer added sucessfully.');
-          }
-        },
-        (responseCustomerError) => {
-          (this.err = responseCustomerError),
-            console.log(this.err),
-            alert(
-              'Sorry, something went wrong. Please try again after sometime.'
-            );
-        },
-        () => console.log('Customer method added successfully')
-      );
-    } else {
-      //this.service.onUpdate(customer);
-    }
+      this.service.createCustomer(customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));  
     //this.service.post(customer);
     this.router.navigateByUrl('');
   }
+}
 }

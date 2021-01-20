@@ -4,7 +4,7 @@
 <div class="col-sm-7">
   <form
     #loginForm="ngForm"
-    (ngSubmit)="submitLoginForm(loginForm)"
+    (ngSubmit)="submitLoginForm(loginForm.value)"
     style="background-color: white"
   >
     <h5 style="color: dimgrey; font-size: medium">All fields are mandatory</h5>

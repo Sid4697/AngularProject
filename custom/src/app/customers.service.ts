@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { iCustomer } from './customer/customer.model';
-import { Observable } from 'rxjs';
+import { Subscriber, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -39,6 +39,7 @@ export class CustomersService {
 
   constructor(private http: HttpClient) {}
 
+  //http://localhost:57613/Values/GetAll
   getCustomer(): Observable<iCustomer[]> {
     let serCustomer = this.http.get<iCustomer[]>(
       'http://localhost:57613/Values/GetAll'
@@ -46,11 +47,35 @@ export class CustomersService {
     return serCustomer;
   }
 
+  //http://localhost:57613/Values/CreateCustomer
   createCustomer(customer: iCustomer): Observable<iCustomer> {
+    console.log(customer);
     return this.http.post<iCustomer>(
-      'http://localhost:57613/Values/CreateCutomer',
-      customer,
-      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      'http://localhost:57613/Values/CreateCustomer',{
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),body:customer
+      }
+    );
+  }
+
+  deleteCustomer(id: number): Observable<iCustomer> {
+    return this.http.delete<iCustomer>(
+      'http://localhost:57613/Values/DeleteData?uid=' +
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+          body: id,
+        }
+    );
+  }
+
+  updateCustomer(id: number, customer: iCustomer): Observable<iCustomer> {
+    console.log('value' + id);
+    console.log(customer);
+    return this.http.put<iCustomer>(
+      'http://localhost:57613/Values/DeleteData?uid=' + id,
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        body: customer,
+      }
     );
   }
 }

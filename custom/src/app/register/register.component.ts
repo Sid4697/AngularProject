@@ -13,6 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {
   header;
   id: number;
+  err: string;
   customer: iCustomer = {
     id: null,
     firstName: '',
@@ -36,7 +37,7 @@ export class RegisterComponent implements OnInit {
     this.header = this.id === 0 ? 'Add Employee' : 'Edit employee';
 
     if (this.id != 0) {
-      this.customer = this.service.onGetCustomer(this.id);
+      //this.customer = this.service.onGetCustomer(this.id);
     }
   }
 
@@ -54,9 +55,24 @@ export class RegisterComponent implements OnInit {
       orderTotal: form.value.orderTotal,
     };
     if (this.id === 0) {
-      this.service.post(customer);
+      //this.service.post(customer);
+      this.service.createCustomer(customer).subscribe(
+        (responseCustomerData) => {
+          if (responseCustomerData) {
+            alert('Customer added sucessfully.');
+          }
+        },
+        (responseCustomerError) => {
+          (this.err = responseCustomerError),
+            console.log(this.err),
+            alert(
+              'Sorry, something went wrong. Please try again after sometime.'
+            );
+        },
+        () => console.log('Customer method added successfully')
+      );
     } else {
-      this.service.onUpdate(customer);
+      //this.service.onUpdate(customer);
     }
     //this.service.post(customer);
     this.router.navigateByUrl('');

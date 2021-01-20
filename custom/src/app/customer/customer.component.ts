@@ -15,16 +15,22 @@ export class CustomerComponent implements OnInit {
   searchTerm;
   image = 'Female';
 
-  constructor(private service: CustomersService, private router: Router) {
-    this.customer = this.service.getCustomer();
+  constructor(private service: CustomersService, private router: Router) {}
+
+  getCustomers() {
+    this.service.getCustomer().subscribe((c) => {
+      this.customer = c;
+    });
   }
 
   addCustomer() {
     this.router.navigate(['/add/0']);
   }
-  onDelete(id: number) {
-    this.service.delete(id);
-  }
+  //onDelete(id: number) {
+  //this.service.delete(id);
+  //}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCustomers();
+  }
 }

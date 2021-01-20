@@ -5,25 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import { RegisterComponent } from './register/register.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CustomersService } from './customers.service';
-import { CustomerFilterPipe} from './customer/customer-filter.pipe'
-import {routing} from './app-routing.module'
+import { CustomerFilterPipe } from './customer/customer-filter.pipe';
+import { routing } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     RegisterComponent,
-    CustomerFilterPipe
+    CustomerFilterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    routing
+    HttpClientModule,
+    routing,
   ],
   providers: [CustomersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

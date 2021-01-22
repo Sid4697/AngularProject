@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   header;
   id: number;
   err: string;
-  customer: iCustomer = {
+  cust: iCustomer = {
     id: null,
     firstName: '',
     lastName: '',
@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
     orderTotal: null,
   };
   value: any;
+  data:any;
 
 
   constructor(
@@ -40,27 +41,33 @@ export class RegisterComponent implements OnInit {
 
     if (this.id != 0) {
       //this.customer = this.service.onGetCustomer(this.id);
+      this.service.getCustomerById(this.id).subscribe(data=>console.log(data));
+      this.cust=this.data;
     }
   }
 
-  submitLoginForm(customer: iCustomer) {
-    console.log(customer);
-    //var customer: iCustomer = {
-    //id: form.value.id,
-    //firstName: form.value.firstName,
-    //lastName: form.value.lastName,
-    //address: form.value.address,
-    //gender: form.value.gender,
-    //email: form.value.email,
-    //city: form.value.city,
-    //state: form.value.state,
-    //orderTotal: form.value.orderTotal,
-    //};
+  submitLoginForm(form:NgForm) {
+    var customer: iCustomer = {
+    id: form.value.id,
+    firstName: form.value.firstName,
+    lastName: form.value.lastName,
+    address: form.value.address,
+    gender: form.value.gender,
+    email: form.value.email,
+    city: form.value.city,
+    state: form.value.state,
+    orderTotal: form.value.orderTotal,
+    };
     if (this.id === 0) {
       //this.service.post(customer);
       this.service.createCustomer(customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));  
-    //this.service.post(customer);
+      }
+      else{
+          //this.service.update(customer);
+           customer.id=this.cust.id;
+    this.service.updateCustomer(customer.id,customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));  
+      }
     this.router.navigateByUrl('');
-  }
+  
 }
 }

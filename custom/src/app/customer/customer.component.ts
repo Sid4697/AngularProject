@@ -14,38 +14,23 @@ export class CustomerComponent implements OnInit {
   customer: iCustomer[];
   searchTerm: string;
   image = 'Female';
-  err;
+  value;
 
   constructor(private service: CustomersService, private router: Router) {}
 
-  getCustomers() {
-    this.service.getCustomer().subscribe((c) => {
-      this.customer = c;
-    });
-  }
+  
 
   addCustomer() {
     this.router.navigate(['/add/0']);
   }
-  onDelete(id: number) {
-    this.service.deleteCustomer(id).subscribe(
-      (responseCustomerData) => {
-        if (responseCustomerData) {
-          alert('Customer removed sucessfully.');
-        }
-      },
-      (responseCustomerError) => {
-        (this.err = responseCustomerError),
-          console.log(this.err),
-          alert(
-            'Sorry, something went wrong. Please try again after sometime.'
-          );
-      },
-      () => console.log('Delete method added successfully')
-    );
-  }
+  
 
   ngOnInit() {
-    this.getCustomers();
+    this.service.getCustomer().subscribe(response=>{this.customer=response});
+  
+  }
+  onDelete(id:number){
+    this.service.deleteCustomer(id).subscribe(response=>{this.value=response},(error:any)=>console.log(error));
+    window.location.reload();
   }
 }

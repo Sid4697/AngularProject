@@ -4,7 +4,7 @@
 <div class="col-sm-7">
   <form
     #loginForm="ngForm"
-    (ngSubmit)="submitLoginForm(loginForm.value)"
+    (ngSubmit)="submitLoginForm(loginForm)"
     style="background-color: white"
   >
     <h5 style="color: dimgrey; font-size: medium">All fields are mandatory</h5>
@@ -18,7 +18,7 @@
         #id="ngModel"
         placeholder="Enter Your Id"
         class="form-control"
-        [(ngModel)]="customer.id"
+        [(ngModel)]="cust.id"
         required
       />
 
@@ -40,7 +40,7 @@
         name="firstName"
         placeholder="Enter Your First Name"
         required
-        [(ngModel)]="customer.firstName"
+        [(ngModel)]="cust.firstName"
         #firstName="ngModel"
       />
 
@@ -62,7 +62,7 @@
         placeholder="Enter Your Last Name"
         #lastName="ngModel"
         class="form-control"
-        [(ngModel)]="customer.lastName"
+        [(ngModel)]="cust.lastName"
         required
       />
 
@@ -83,7 +83,7 @@
         name="gender"
         value="Male"
         #gender="ngModel"
-        [(ngModel)]="customer.gender"
+        [(ngModel)]="cust.gender"
         required
       />
       <label for="Male">Male</label>
@@ -92,7 +92,7 @@
         name="gender"
         value="Female"
         #gender="ngModel"
-        [(ngModel)]="customer.gender"
+        [(ngModel)]="cust.gender"
         required
       />
       <label for="Female">Female</label>
@@ -115,7 +115,7 @@
         placeholder="Enter Your Email"
         #emailRef="ngModel"
         class="form-control"
-        [(ngModel)]="customer.email"
+        [(ngModel)]="cust.email"
         required
         pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
       />
@@ -141,7 +141,7 @@
         placeholder="Enter Your Address"
         #address="ngModel"
         class="form-control"
-        [(ngModel)]="customer.address"
+        [(ngModel)]="cust.address"
         required
       />
 
@@ -163,7 +163,7 @@
         placeholder="Enter Your City"
         #city="ngModel"
         class="form-control"
-        [(ngModel)]="customer.city"
+        [(ngModel)]="cust.city"
         required
       />
 
@@ -185,7 +185,7 @@
         placeholder="Enter Your state"
         #state="ngModel"
         class="form-control"
-        [(ngModel)]="customer.state"
+        [(ngModel)]="cust.state"
         required
       />
 
@@ -203,12 +203,10 @@
       <label>Order Total</label>
       <input
         type="number"
-        min="1000"
-        step="1000"
         name="orderTotal"
         #orderTotal="ngModel"
         class="form-control"
-        [(ngModel)]="customer.orderTotal"
+        [(ngModel)]="cust.orderTotal"
         required
       />
 

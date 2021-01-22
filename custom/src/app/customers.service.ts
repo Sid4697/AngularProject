@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { iCustomer } from './customer/customer.model';
 import { Subscriber, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+//import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -47,35 +47,43 @@ export class CustomersService {
     return serCustomer;
   }
 
-  //http://localhost:57613/Values/CreateCustomer
-  createCustomer(customer: iCustomer): Observable<iCustomer> {
-    console.log(customer);
-    return this.http.post<iCustomer>(
-      'http://localhost:57613/Values/CreateCustomer',{
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),body:customer
-      }
-    );
+  //http://localhost:57613/Values/GetById?uid
+
+  getCustomerById(id:number): Observable<iCustomer>{
+    console.log(id);
+    return this.http.get<iCustomer>('http://localhost:57613/Values/GetById?uid='+id);
   }
+
+  //http://localhost:57613/Values/CreateCustomer
+  createCustomer(customer:iCustomer): Observable<any> {
+    const raw={id:1};
+     
+    //const headers= { 'Content-Type': 'application/json' }
+    //console.log(customer);
+    //let input = {value: customer}
+    //return this.http.post<iCustomer>('http://localhost:57613/Values/CreateCustomer',customer,{'headers':headers});
+    const customerStr=JSON.stringify(customer);
+    console.log(customer);
+    return this.http.post<iCustomer>('http://localhost:57613/Values/CreateCustomer',customerStr,{
+      headers: new HttpHeaders().set('pragma','no-cache').set('Content-Type','application/json')});
+   //eturn this.http.post('http://localhost:57613/Values/CreateCustomer',customer);
+     }
 
   deleteCustomer(id: number): Observable<iCustomer> {
     return this.http.delete<iCustomer>(
-      'http://localhost:57613/Values/DeleteData?uid=' +
+      'http://localhost:57613/Values/DeleteData?uid='+id,
         {
           headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-          body: id,
         }
     );
-  }
+      }
 
   updateCustomer(id: number, customer: iCustomer): Observable<iCustomer> {
-    console.log('value' + id);
+    //console.log('value' + id);
     console.log(customer);
+    const headers= { 'Content-Type': 'application/json' }
     return this.http.put<iCustomer>(
-      'http://localhost:57613/Values/DeleteData?uid=' + id,
-      {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-        body: customer,
-      }
+      'http://localhost:57613/Values/DeleteData?uid=' + id,customer,{'headers':headers}
     );
   }
 }

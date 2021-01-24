@@ -41,8 +41,8 @@ export class RegisterComponent implements OnInit {
 
     if (this.id != 0) {
       //this.customer = this.service.onGetCustomer(this.id);
-      this.service.getCustomerById(this.id).subscribe(data=>console.log(data));
-      this.cust=this.data;
+      this.service.getCustomerById(this.id).subscribe(response=>{this.cust=response})
+      //this.cust=this.data;
     }
   }
 
@@ -64,8 +64,8 @@ export class RegisterComponent implements OnInit {
       }
       else{
           //this.service.update(customer);
-           customer.id=this.cust.id;
-    this.service.updateCustomer(customer.id,customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));  
+           
+    this.service.updateCustomer(customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));  
       }
     this.router.navigateByUrl('');
   

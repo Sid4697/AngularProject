@@ -15,6 +15,7 @@ export class CustomerComponent implements OnInit {
   searchTerm: string;
   image = 'Female';
   value;
+  showModal:boolean;
 
   constructor(private service: CustomersService, private router: Router) {}
 
@@ -29,8 +30,11 @@ export class CustomerComponent implements OnInit {
     this.service.getCustomer().subscribe(response=>{this.customer=response});
   
   }
-  onDelete(id:number){
-    this.service.deleteCustomer(id).subscribe(response=>{this.value=response},(error:any)=>console.log(error));
-    window.location.reload();
+
+  editItem(customer:iCustomer){
   }
+  deleteItem(){}
+
+  //$('#myModal').modal('show');
+  
 }

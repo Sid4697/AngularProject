@@ -1,0 +1,396 @@
+<!--div class="modal-dialog">
+      <div class="modal-content">
+<div class="modal-header bg-primary text-white">
+    <h4 class="modal-title" id="modal-basic-title">Update Customer</h4>
+</div>
+<div class="modal-body">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" *ngIf="editForm">
+
+        
+       <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="id" class="col-form-label col-sm-2 text-right">Id:</label>
+            <div class="col-sm-5">
+                <input type="number" formControlName="firstName" class="form-control" />
+                <div *ngIf="editFormData.id.invalid &amp;&amp; (editFormData.id.dirty || editFormData.id.touched)"
+                    class="alert-danger">
+                    <span>Id is required!</span>
+                </div>
+            </div>
+        </div>
+
+      <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="firstName" class="col-form-label col-sm-2 text-right">First Name:</label>
+            <div class="col-sm-5">
+                <input type="text" formControlName="firstName" class="form-control" />
+                <div *ngIf="editFormData.firstName.invalid &amp;&amp; (editFormData.firstName.dirty || editFormData.firstName.touched)"
+                    class="alert-danger">
+                    <span>First name is required!</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="lastName" class="col-form-label col-sm-2 text-right">Last Name:</label>
+            <div class="col-sm-5">
+                <input type="text" formControlName="lastName" class="form-control" />
+                <div *ngIf="editFormData.lastName.invalid &amp;&amp; (editFormData.lastName.dirty || editFormData.lastName.touched)"
+                    class="alert-danger">
+                    <span>Last name is required!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="address" class="col-form-label col-sm-2 text-right">Address:</label>
+            <div class="col-sm-5">
+                <input type="text" formControlName="address" class="form-control" />
+                <div *ngIf="editFormData.address.invalid &amp;&amp; (editFormData.address.dirty || editFormData.address.touched)"
+                    class="alert-danger">
+                    <span>Address is required!</span>
+                </div>
+            </div>
+        </div>
+             
+         <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="gender" class="col-form-label col-sm-2 text-right">Gender:</label>
+            <div class="col-sm-5">
+                <input type="radio" formControlName="gender" class="form-control" />
+                <label for="Male">Male</label>
+
+                <input type="radio" formControlName="gender" class="form-control" />
+                <label for="Female">Female</label>
+
+                <div *ngIf="editFormData.gender.invalid &amp;&amp; (editFormData.gender.dirty || editFormData.gender.touched)"
+                    class="alert-danger">
+                    <span>Gender is required!</span>
+                </div>
+            </div>
+        </div>
+                           
+        <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="email" class="col-form-label col-sm-2 text-right">Email:</label>
+            <div class="col-sm-5">
+                <input type="text" formControlName="email" class="form-control" />
+                <div *ngIf="editFormData.email.invalid &amp;&amp; (editFormData.email.dirty || editFormData.email.touched)"
+                    class="alert-danger">
+                    <span *ngIf="editFormData.email.errors.required">Email is required!</span>
+                    <span *ngIf="editFormData.email.errors.email">Email must be a valid address!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="city" class="col-form-label col-sm-2 text-right">City:</label>
+            <div class="col-sm-5">
+                <input type="text" formControlName="city" class="form-control" />
+                <div *ngIf="editFormData.city.invalid &amp;&amp; (editFormData.city.dirty || editFormData.city.touched)"
+                    class="alert-danger">
+                    <span>City is required!</span>
+                </div>
+            </div>
+        </div>
+          
+        <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="state" class="col-form-label col-sm-2 text-right">State:</label>
+            <div class="col-sm-5">
+                <input type="text" formControlName="state" class="form-control" />
+                <div *ngIf="editFormData.state.invalid &amp;&amp; (editFormData.state.dirty || editFormData.state.touched)"
+                    class="alert-danger">
+                    <span>State is required!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row d-flex justify-content-center align-items-center">
+            <label for="orderTotal" class="col-form-label col-sm-2 text-right">Order Total:</label>
+            <div class="col-sm-5">
+                <input type="number" formControlName="orderTotal" class="form-control" />
+                <div *ngIf="editFormData.orderTotal.invalid &amp;&amp; (editFormData.orderTotal.dirty || editFormData.orderTotal.touched)"
+                    class="alert-danger">
+                    <span>Order Total is required!</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button [disabled]="isLoading" class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Cancel</button>
+            <button [disabled]="isLoading" class="btn btn-primary mr-2">Update</button>
+        </div>
+ 
+    </form>
+   </div>
+  </div>
+</div!-->
+<!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"  (click)="modal.close('Yes')">Update</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancel')">Cancel</button>
+</div> -->
+
+<!--div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Edit Customer</h4>
+        </div>
+        <div class="modal-body">
+                  <form
+    #loginForm="ngForm"
+    (ngSubmit)="submitLoginForm(loginForm)"
+    style="background-color: white"
+  >
+                        <div class="row">
+                           <div class="col-sm-6">
+                              <div class="form-group">
+      <label>Id</label>
+      <input
+        type="number"
+        name="id"
+        #id="ngModel"
+        placeholder="Enter Your Id"
+        class="form-control"
+        [(ngModel)]="cust.id"
+        required
+      />
+
+      <div
+        *ngIf="id.errors && (id.dirty || id.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="id.errors.required">
+          <p>&nbsp;Id is mandatory</p>
+        </div>
+      </div>
+    </div>
+                           </div> 
+                           <div class="col-sm-6">
+                              <div class="form-group">
+      <label>FirstName</label>
+      <input
+        type="text"
+        class="form-control"
+        name="firstName"
+        placeholder="Enter Your First Name"
+        required
+        [(ngModel)]="cust.firstName"
+        #firstName="ngModel"
+      />
+
+      <div
+        *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!firstName.errors.required">
+          <p>&nbsp;First Name is mandatory</p>
+        </div>
+      </div>
+    </div>
+ </div>
+                           <div class="col-sm-6">
+                                 <div class="form-group">
+      <label>LastName</label>
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Enter Your Last Name"
+        #lastName="ngModel"
+        class="form-control"
+        [(ngModel)]="cust.lastName"
+        required
+      />
+
+      <div
+        *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!lastName.errors.required">
+          <p>&nbsp;Last Name is mandatory</p>
+        </div>
+      </div>
+    </div>
+ </div>
+
+ <div class="col-sm-6">
+               <div class="form-group">
+      <label>Address</label>
+      <input
+        type="text"
+        name="address"
+        placeholder="Enter Your Address"
+        #address="ngModel"
+        class="form-control"
+        [(ngModel)]="cust.address"
+        required
+      />
+
+      <div
+        *ngIf="address.errors && (address.dirty || address.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!address.errors.required">
+          <p>&nbsp;Address is mandatory</p>
+        </div>
+      </div>
+    </div>
+ </div>
+
+                           <div class="col-sm-6">
+                              <div class="form-group">
+                                <div class="radioDiv">
+                                   <label class="control-label genLabel">Gender</label>
+      <input
+      class="genInput"
+        type="radio"
+        name="gender"
+        value="Male"
+        #gender="ngModel"
+        [(ngModel)]="cust.gender"
+        required
+      />
+      <label class="genLabel" for="Male">Male</label>
+      <input
+        class="genInput"
+        type="radio"
+        name="gender"
+        value="Female"
+        #gender="ngModel"
+        [(ngModel)]="cust.gender"
+        required
+      />
+      <label class="genLabel" for="Female">Female</label>
+
+      <div
+        *ngIf="gender.errors && (gender.dirty || gender.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!gender.errors.required">
+          <p>&nbsp;Gender is mandatory</p>
+        </div>
+      </div>
+                                </div>
+     
+    </div>
+  </div>
+
+   <div class="col-sm-6">
+      <div class="form-group">
+      <label>EmailId</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter Your Email"
+        #emailRef="ngModel"
+        class="form-control"
+        [(ngModel)]="cust.email"
+        required
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+      />
+
+      <div
+        *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!emailRef.errors.required">
+          <p>&nbsp;Email id is mandatory</p>
+        </div>
+        <div [hidden]="!emailRef.errors.pattern">
+          <p>&nbsp;Email id is not entered in proper format</p>
+        </div>
+      </div>
+    </div>
+ </div>
+
+ <div class="col-sm-6">
+                                 <div class="form-group">
+      <label>City</label>
+      <input
+        type="text"
+        name="city"
+        placeholder="Enter Your City"
+        #city="ngModel"
+        class="form-control"
+        [(ngModel)]="cust.city"
+        required
+      />
+
+      <div
+        *ngIf="city.errors && (city.dirty || city.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!city.errors.required">
+          <p>&nbsp;City is mandatory</p>
+        </div>
+      </div>
+    </div>
+ </div>
+
+ <div class="col-sm-6">
+                                <div class="form-group">
+      <label>State</label>
+      <input
+        type="text"
+        name="state"
+        placeholder="Enter Your state"
+        #state="ngModel"
+        class="form-control"
+        [(ngModel)]="cust.state"
+        required
+      />
+
+      <div
+        *ngIf="state.errors && (state.dirty || state.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!state.errors.required">
+          <p>&nbsp;State is mandatory</p>
+        </div>
+      </div>
+    </div>
+ </div>
+
+ <div class="col-sm-6">
+         <div class="form-group">
+      <label>OrderTotal</label>
+      <input
+        type="number"
+        name="orderTotal"
+        #orderTotal="ngModel"
+        class="form-control"
+        [(ngModel)]="cust.orderTotal"
+        required
+      />
+
+      <div
+        *ngIf="orderTotal.errors && (orderTotal.dirty || orderTotal.touched)"
+        style="text-align: left; padding-top: 5px; color: red"
+      >
+        <div [hidden]="!orderTotal.errors.required">
+          <p>&nbsp;orderTotal is mandatory</p>
+        </div>
+      </div>
+    </div>
+ </div>
+
+ 
+
+               <row div>  
+               </div>
+               
+                 
+                    <div class="modal-footer submitAndClose">
+                      <div class="submit">
+                    <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                     </div>
+                     <div class="closeDiv"><button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button></div>
+                      
+                   </div>
+              
+              
+               
+                  </form>
+       
+      
+   </div>
+        
+      </div>
+    </div>
+    </div!-->
+
+

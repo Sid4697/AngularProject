@@ -13,7 +13,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {
   header;
   id: number;
-  err: string;
   cust: iCustomer = {
     id: null,
     firstName: '',
@@ -23,10 +22,13 @@ export class RegisterComponent implements OnInit {
     email: '',
     city: '',
     state: '',
-    orderTotal: null,
+    country: '',
   };
   value: any;
-  data:any;
+  showModal: boolean;
+  //registerForm: FormGroup;
+  submitted = false;
+  
 
 
   constructor(
@@ -34,6 +36,17 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private arouter: ActivatedRoute
   ) {}
+
+   show()
+  {
+    this.showModal = true; // Show-Hide Modal Check
+    
+  }
+  //Bootstrap Modal Close event
+  hide()
+  {
+    this.showModal = false;
+  }
 
   ngOnInit() {
     this.id = +this.arouter.snapshot.paramMap.get('id');
@@ -56,18 +69,19 @@ export class RegisterComponent implements OnInit {
     email: form.value.email,
     city: form.value.city,
     state: form.value.state,
-    orderTotal: form.value.orderTotal,
+    country: form.value.country,
     };
     if (this.id === 0) {
       //this.service.post(customer);
       this.service.createCustomer(customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));  
-      }
-      else{
-          //this.service.update(customer);
-           
-    this.service.updateCustomer(customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));  
-      }
-    this.router.navigateByUrl('');
+      
+    }
+    else
+    {
+      this.service.updateCustomer(customer).subscribe(response=>{this.value=response},(error:any)=>console.log(error));
+    }
+      
+    this.router.navigate(['/customer']);
   
 }
 }

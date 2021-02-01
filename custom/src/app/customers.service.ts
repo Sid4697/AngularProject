@@ -69,13 +69,10 @@ export class CustomersService {
    //eturn this.http.post('http://localhost:57613/Values/CreateCustomer',customer);
      }
 
-  //deleteCustomer(id: number): Observable<iCustomer> {
-    //const headers= { 'Content-Type': 'application/json' }
-    //return this.http.delete<iCustomer>(
-      //'http://localhost:57613/Values/DeleteData?uid='+id,
-        //{'headers':headers}
-    //);
-      //}
+  deleteCustomer(id: number): Observable<iCustomer> {
+    const headers= { 'Content-Type': 'application/json' }
+    return this.http.delete<iCustomer>('http://localhost:57613/Values/DeleteData?uid='+id,{'headers':headers});
+      }
 
   updateCustomer(customer: iCustomer): Observable<iCustomer> {
     //console.log('value' + id);

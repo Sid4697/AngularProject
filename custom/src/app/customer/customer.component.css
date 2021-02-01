@@ -57,7 +57,29 @@ input {
   align-self: auto;
 }
 
+input.ng-invalid {
+  border-left: 5px solid red;
+}
+
+input.ng-valid {
+  border-left: 5px solid green;
+}
+
+td,th{text-align: center;}
+
+.submitAndClose,.deleteAndClose{display:inline-flex;width:100%}
+.submit,.closeDiv,.delete,.cancelDiv{width:50%;}
+.radioDiv{display:inline-flex;width:80%;justify-content: space-evenly;}
+.genLabel{width:33%}
+.btnData{text-align: center;padding:1%;justify-content: center;margin:auto}
+.deletebtn{width: 30%;margin:auto;padding:1%}
 
 
+
+
+
+
+
+ 
 
 

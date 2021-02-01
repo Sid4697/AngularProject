@@ -7,5 +7,5 @@ export interface iCustomer {
   email: string;
   city: string;
   state: string;
-  orderTotal: number;
+  country: string;
 }

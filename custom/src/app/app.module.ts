@@ -5,11 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomersService } from './customers.service';
 import { CustomerFilterPipe } from './customer/customer-filter.pipe';
 import { routing } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+
 
 
 @NgModule({
@@ -18,12 +21,15 @@ import { HttpClientModule } from '@angular/common/http';
     CustomerComponent,
     RegisterComponent,
     CustomerFilterPipe,
+    EditCustomerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
     routing,
   ],
   providers: [HttpClientModule,CustomersService],

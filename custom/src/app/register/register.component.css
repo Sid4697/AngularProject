@@ -8,3 +8,6 @@ input.ng-valid {
 .headerdiv {
   margin-left: 10px;
 }
+.margin-left{
+    margin-left: 20px !important;
+}

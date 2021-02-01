@@ -1,0 +1,12 @@
+.data:nth-child(odd) {
+  background-color: #e0e4e4;
+}
+.heading{
+  border-style:solid;
+  border-width: thin;
+  }
+  .data {
+  border-style:double;
+  border-width: thin;
+  height: 50px;
+}

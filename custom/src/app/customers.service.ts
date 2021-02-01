@@ -57,7 +57,7 @@ export class CustomersService {
 
   //http://localhost:57613/Values/CreateCustomer
   createCustomer(customer:iCustomer): Observable<any> {
-    const raw={id:1};
+    //const raw={id:1};
      //const headers= { 'Content-Type': 'application/json' }
     //console.log(customer);
     //let input = {value: customer}

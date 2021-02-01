@@ -1,0 +1,14 @@
+.navbar {
+    background-color:rgb(36, 144, 211);
+    }
+    .fa{
+        color:whitesmoke;
+       display:inline-flex;
+       font-size: 25px;
+        
+    }
+    .navbar-brand{
+      font:italic;
+      color:whitesmoke;
+      font-size: 23px;
+    }

@@ -3,7 +3,7 @@ import { iCustomer } from './customer/customer.model';
 import { Subscriber, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-//import { HttpHeaders } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })

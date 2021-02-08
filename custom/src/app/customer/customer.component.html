@@ -26,6 +26,8 @@
 
         </div>
 
+        
+
             <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -541,6 +543,33 @@
     </div>
   </div>
 
+  <div *ngIf="alert" class="alert alert-success alertDiv" role="alert">
+  <div class="textSpan"><strong>Added!</strong> Customer data has been added.</div>
+  <div class="buttonSpan">
+    <button type="button" (click)="closeAlert()" class="close alertButton" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+
+<div *ngIf="updateAlert" class="alert alert-success alertDiv" role="alert">
+  <div class="textSpan"><strong>Updated!</strong> Customer data has been updated.</div>
+  <div class="buttonSpan">
+    <button type="button" (click)="closeAlert()" class="close alertButton" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+
+<div *ngIf="deleteAlert" class="alert alert-success alertDiv" role="alert">
+  <div class="textSpan"><strong>Deleted!</strong> Customer data has been deleted.</div>
+  <div class="buttonSpan">
+    <button type="button" (click)="closeAlert()" class="close alertButton" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+
      
   
   <div class="secondDiv">
@@ -549,8 +578,9 @@
         <thead>
             <tr class="heading">
                       <th scope="col"></th>
-                      <th scope="col">First Name</th>
-                      <th scope="col">Last Name</th>
+                      <th scope="col" (click)="sort('firstName')">First Name&nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
+                      <!--th scope="col">First Name</th!-->
+                      <th scope="col" (click)="sort('lastName')">Last Name&nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
                       <th scope="col">Address</th>
                       <th scope="col">City</th>
                       <th scope="col">State</th>
@@ -562,7 +592,8 @@
             </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let data of customer | customerFilter: searchTerm" class="data">
+    <tr *ngFor="let data of customer | customerFilter: searchTerm|orderBy: key: reverse| paginate: {itemsPerPage:5,currentPage:p};" class="data">
+        <!--tr *ngFor="let data of customer | customerFilter: searchTerm|orderBy: key: reverse" class="data"!-->
         <td
           class="col-sm-1 imgdiv"
           *ngIf="data.gender == 'Male'; then ifBlock; else elseBlock"
@@ -610,26 +641,14 @@
       </div>
     </div>
     </div>
-                 </div>
-
-                <!--div id="delete"  class="modal" [hidden]="showdata==false">
-          <form class="modal-content" >
-           <div class="container">
-             <h1>Delete Account</h1>
-             <p>Are you sure you want to delete {{data.firstName}}?</p>
-        
-             <div class="clearfix">
-               <button type="button" class="btn btn-default cancelbtn" (click)="close()">Cancel</button>
-               <button type="button"  (click)="onDelete(data.id)" class="btn btn-danger deletebtn">Delete</button>
-             </div>
-           </div>
-         </form>
-       </div!-->
+  </div>
         
         </tr>
       </tbody>
-     
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </table>
+            
+
 </div>
 </div>
 

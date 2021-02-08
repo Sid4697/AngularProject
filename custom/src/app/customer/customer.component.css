@@ -2,12 +2,15 @@
   width: 100%;
 }
 .firstdiv {
+  
 }
 
-.nameAndButton {
+.nameAndButton{
+
   display: inline-flex;
   width: 80%;
   justify-content: space-around;
+  
 }
 .namediv {
   display: flex;
@@ -78,6 +81,13 @@ td,th{text-align: center;}
 .genLabel{width:33%}
 .btnData{text-align: center;padding:1%;justify-content: center;margin:auto}
 .deletebtn{width: 30%;margin:auto;padding:1%}
+
+.alertDiv{
+  display: inline-flex ;
+  width:100%;
+}
+.textSpan{width:90%}
+.buttonSpan{width:10%}
 
 
 

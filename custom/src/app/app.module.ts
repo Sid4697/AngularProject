@@ -12,6 +12,9 @@ import { routing } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import {Ng2OrderModule} from 'ng2-order-pipe'
+import {NgxPaginationModule} from 'ngx-pagination'
+
 
 
 
@@ -31,6 +34,8 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
     HttpClientModule,
     NgbModule,
     routing,
+    Ng2OrderModule,
+    NgxPaginationModule,
   ],
   providers: [HttpClientModule,CustomersService],
   bootstrap: [AppComponent],
